@@ -18,7 +18,6 @@ dotenv.config();
 mongo.connect();
 
 const cors = require("cors");
-const { response } = require("express");
 app.use(cors({
   origin: "*"
 }))
