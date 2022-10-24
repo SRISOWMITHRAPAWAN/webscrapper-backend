@@ -17,10 +17,10 @@ const mongo=require("./connect");
 dotenv.config();
 mongo.connect();
 
-// const cors = require("cors");
-// app.use(cors({
-//   origin: "*"
-// }))
+const cors = require("cors");
+app.use(cors({
+  origin: "*"
+}))
 
 app.use("/scrapdata",scraprouter);
 
