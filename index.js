@@ -3,17 +3,28 @@ const request = require("request");
 const cheerio = require("cheerio");
 const dotenv=require("dotenv");
 
+
 const express=require("express");
+const router=express.Router();
 
 
 const scraprouter=require("./router/scraprouter");
 const app=express();
 app.use(express.json());
 const mongo=require("./connect");
+var cors = require('cors');
+app.use(cors());
 
 dotenv.config();
 mongo.connect();
 
+router.get("/", (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*")
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Access-Control-Max-Age", "1800");
+  res.setHeader("Access-Control-Allow-Headers", "content-type");
+  res.setHeader( "Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS" ); 
+   });
 
 app.use("/scrapdata",scraprouter);
 
@@ -66,6 +77,6 @@ request('https://www.amazon.in/s?k=iphone&crid=58MTH0QRSPCR&sprefix=iphone%2Caps
 });
 
 
-app.listen(process.env.PORT || 8800);
+app.listen(process.env.PORT);
 
 
