@@ -3,7 +3,7 @@ const mongo=require("../connect");
 
 module.exports.getDetails=async (req,res)=>{
    try{
-   const scrapedData=await mongo.client.selectedDb
+   const scrapedData=await mongo.selectedDb
     .collection("scrapdata")
     .find()
     .toArray();
