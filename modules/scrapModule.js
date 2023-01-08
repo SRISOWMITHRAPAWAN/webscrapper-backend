@@ -1,7 +1,7 @@
 const mongo=require("../connect");
 
 
-module.exports.getDetails=async (req,res)=>{
+module.exports.getDetails=async (req,res,next)=>{
    try{
    const scrapedData=await mongo.selectedDb
     .collection("scrapdata")
@@ -18,7 +18,7 @@ module.exports.getDetails=async (req,res)=>{
 // })
 };
 
-module.exports.createDetails=async (req,res)=>{
+module.exports.createDetails=async (req,res,next)=>{
   try{
    const insertedResponse= await mongo.selectedDb
    .collection("scrapdata")
