@@ -5,7 +5,7 @@ module.exports.getDetails=async (req,res,next)=>{
    try{
    const scrapedData=await mongo.selecteddb
     .collection("scrapdata")
-    .find()
+    .find({})
     .toArray();
     res.send(scrapedData);
    }catch(err){
