@@ -5,9 +5,12 @@ module.exports={
     selecteddb:{},
     async connect(){
         try{
-            const client=await MongoClient.connect(process.env.MONGODB_URL, {useNewUrlParser: true});
+            const client=await MongoClient.connect(process.env.MONGODB_URL, (err,client)=>{
+
+                this.selecteddb=client.db("products");
+            });
            
-            this.selecteddb=client.db("products");
+           
         // console.log(this.selectedDb);
         console.log("connection successfull")
         } catch(err){
